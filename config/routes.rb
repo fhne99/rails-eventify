@@ -8,5 +8,26 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "events#index"
+
+  resources :events do
+    resources :comments, only: [:create, :update, :destroy]
+    resources :ratings, only: [:create, :update, :destroy]
+    resources: :bookmarks, only: [:create, :destroy]
+  end
+
+  resources :bookmarks, only: [:index]
+  resources :ratings, only: [:index]
+  resources :comments, only: [:index]
+
+  resource :cart, only: [:show, :update, :destroy] do
+    resources :cart_items, only: [:create, :update, :destroy]
+  end
+
+  # Autres routes personnalisées
+  get 'my_events', to: 'events#my_events', as: 'my_events'
+  get 'my_bookmarks', to: 'bookmarks#my_bookmarks', as: 'my_bookmarks'
+  get 'my_ratings', to: 'ratings#my_ratings', as: 'my_ratings'
+  get 'my_comments', to: 'comments#my_comments', as: 'my_comments'
+
 end
