@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  #root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,19 +8,19 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "events#index"
+  root to: "events#index"
 
   resources :events do
     resources :comments, only: [:create, :update, :destroy]
     resources :ratings, only: [:create, :update, :destroy]
-    resources: :bookmarks, only: [:create, :destroy]
+    resources :bookmarks, only: [:create, :destroy]
   end
 
   resources :bookmarks, only: [:index]
   resources :ratings, only: [:index]
   resources :comments, only: [:index]
 
-  resource :cart, only: [:show, :update, :destroy] do
+  resources :cart, only: [:show, :update, :destroy] do
     resources :cart_items, only: [:create, :update, :destroy]
   end
 
