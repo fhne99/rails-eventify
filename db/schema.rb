@@ -50,15 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_183133) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "event_organizers", force: :cascade do |t|
-    t.bigint "event_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_organizers_on_event_id"
-    t.index ["user_id"], name: "index_event_organizers_on_user_id"
-  end
-
   create_table "event_participants", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
@@ -112,8 +103,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_183133) do
   add_foreign_key "carts", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
-  add_foreign_key "event_organizers", "events"
-  add_foreign_key "event_organizers", "users"
   add_foreign_key "event_participants", "events"
   add_foreign_key "event_participants", "users"
   add_foreign_key "events", "users"
