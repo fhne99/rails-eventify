@@ -1,12 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @event = Event.new
@@ -14,10 +13,22 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @user = currentèuser
+    @event.user = @user
     if @event.save
       redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render :edit
     end
   end
 
