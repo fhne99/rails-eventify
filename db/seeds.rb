@@ -18,7 +18,7 @@ user = User.create(email: "honorine@wagon.com", password: "123456")
     description: "Description for event #{i+1}",
     start_date: Time.now + i.days,
     end_date: Time.now + (i+1).days,
-    location: "Location for event #{i+1}",
+    location: "Bordeaux",
     category: Event::CATEGORIES.sample,
     available_tickets: rand(1..50)
   )

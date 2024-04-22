@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   # Catégories d'évènements prédéfinies disponibles
   CATEGORIES = ["Concert", "Festival", "Spectacle", "Sport", "Art et culture", "Conférence", "Cours et atelier"]
   validates :category, inclusion: { in: CATEGORIES }
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   #def end_date_after_start_date
   #  errors.add(:end_date, "Doit être après l'heure et la date de début définies") if end_date <= start_date
