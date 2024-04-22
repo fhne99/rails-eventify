@@ -1,1 +1,15 @@
-<h1>Hello world!</h1>
+<h1>Modifier l'événement</h1>
+
+<%= simple_form_for [@user, @event] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :location %>
+  <%= f.input :category, collection: Event::CATEGORIES %>
+  <%= f.input :available_tickets %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Annuler", event_path(@event), class: "btn btn-secondary" %>

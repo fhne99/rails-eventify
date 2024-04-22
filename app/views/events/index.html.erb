@@ -1,1 +1,15 @@
-<h1>Hello world!</h1>
+<h1>Liste des événements</h1>
+
+<%= link_to "Créer un nouvel événement", new_event_path, class: "btn btn-primary mb-3" %>
+
+<% @events.each do |event| %>
+  <div class="event">
+    <h2><%= link_to event.title, event_path(event) %></h2>    <p><strong>Organisé par :</strong> <%= event.user.id %></p>
+    <p><strong>Description :</strong> <%= event.description %></p>
+    <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y") %> - <%= event.end_date.strftime("%d/%m/%Y") %></p>
+    <p><strong>Lieu :</strong> <%= event.location %></p>
+    <p><strong>Catégorie :</strong> <%= event.category %></p>
+    <p><strong>Tickets disponibles :</strong> <%= event.available_tickets %></p>
+    <%= link_to "Éditer", edit_event_path(event), class: "btn btn-secondary mr-2" %>
+  </div>
+<% end %>
