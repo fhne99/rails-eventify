@@ -9,7 +9,7 @@
 #   end
 
 Event.destroy_all
-user = User.create(email: "honorine@wagon.com", password: "123456")
+user = User.create(first_name: "Honorine", last_name: "Faure", email: "honorine@wagon.com", password: "123456")
 
 # Création des events
 4.times do |i|
