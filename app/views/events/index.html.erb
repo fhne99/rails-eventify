@@ -7,7 +7,7 @@
     <% if event.photo.attached? %>
       <%= image_tag event.photo %>
     <% else %>
-      <div style="background-color: grey; width: 100px; height: 100px;"></div>
+      <div class="placeholder-image" style="background-color: #ccc; width: 300px; height: 200px;"></div>
     <% end %>
     <h2><%= link_to event.title, event_path(event) %></h2>
     <p><strong>Organisé par :</strong> <%= event.user.first_name %> <%= event.user.last_name %></p>
@@ -17,5 +17,8 @@
     <p><strong>Catégorie :</strong> <%= event.category %></p>
     <p><strong>Tickets disponibles :</strong> <%= event.available_tickets %></p>
     <%= link_to "Éditer", edit_event_path(event), class: "btn btn-secondary mr-2" %>
+    <%= link_to event_path(event.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-solid fa-trash-can "></i>
+    <% end %>
   </div>
 <% end %>

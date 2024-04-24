@@ -34,6 +34,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    if @event.photo.attached?
+      @event.photo.purge
+    end
     @event.destroy
     redirect_to events_path, status: :see_other
   end
@@ -45,6 +48,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :photo, :description, :start_date, :end_date, :location, :category, :available_tickets)
+    params.require(:event).permit(:title, :description, :photo, :start_date, :end_date, :location, :category, :available_tickets)
   end
 end
