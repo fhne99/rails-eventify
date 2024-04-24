@@ -34,6 +34,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    if @event.photo.attached?
+      @event.photo.purge
+    end
     @event.destroy
     redirect_to events_path, status: :see_other
   end
