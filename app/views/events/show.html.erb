@@ -2,6 +2,11 @@
 
 <div class="event">
   <h2><%= @event.title %></h2>
+  <% if @event.photo.attached? %>
+    <%= image_tag @event.photo %>
+  <% else %>
+    <div style="background-color: grey; width: 100px; height: 100px;"></div>
+  <% end %>
   <p><strong>Description :</strong> <%= @event.description %></p>
   <p><strong>Date :</strong> <%= @event.start_date.strftime("%d/%m/%Y") %> - <%= @event.end_date.strftime("%d/%m/%Y") %></p>
   <p><strong>Lieu :</strong> <%= @event.location %></p>

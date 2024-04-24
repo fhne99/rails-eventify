@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :prices
+  has_one_attached :photo
   validates :title, :description, :location, :start_date, presence: true
   validates :title, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
