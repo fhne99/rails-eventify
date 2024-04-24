@@ -4,6 +4,11 @@
 
 <% @events.each do |event| %>
   <div class="event">
+    <% if event.photo.attached? %>
+      <%= image_tag event.photo %>
+    <% else %>
+      <div style="background-color: grey; width: 100px; height: 100px;"></div>
+    <% end %>
     <h2><%= link_to event.title, event_path(event) %></h2>
     <p><strong>Organisé par :</strong> <%= event.user.first_name %> <%= event.user.last_name %></p>
     <p><strong>Description :</strong> <%= event.description %></p>

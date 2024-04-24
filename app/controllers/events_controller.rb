@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     @events = Event.all
   end
@@ -45,6 +45,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :end_date, :location, :category, :available_tickets)
+    params.require(:event).permit(:title, :photo, :description, :start_date, :end_date, :location, :category, :available_tickets)
   end
 end
