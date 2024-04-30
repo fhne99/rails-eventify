@@ -16,6 +16,18 @@
     <p><strong>Lieu :</strong> <%= event.location %></p>
     <p><strong>Catégorie :</strong> <%= event.category %></p>
     <p><strong>Tickets disponibles :</strong> <%= event.available_tickets %></p>
+    <p><strong>Prix :</strong>
+      <% if event.prices.present? %>
+        <% lowest_price = event.prices.min_by(&:ticket_price) %>
+        <% if lowest_price.ticket_price == 0 %>
+          Gratuit
+        <% else %>
+          <%= number_to_currency(lowest_price.ticket_price, unit: '€') %>
+        <% end %>
+      <% else %>
+        Prix non spécifié
+      <% end %>
+    </p>
     <%= link_to "Éditer", edit_event_path(event), class: "btn btn-secondary mr-2" %>
     <%= link_to "Voir détails", event_path(event), class: "btn btn-secondary mr-2" %>
 
