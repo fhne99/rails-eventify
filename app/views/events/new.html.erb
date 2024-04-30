@@ -9,6 +9,17 @@
   <%= f.input :location %>
   <%= f.input :category, collection: Event::CATEGORIES %>
   <%= f.input :available_tickets %>
+  <%= f.input :available_tickets %>
+
+  <h3>Ajouter un prix :</h3>
+  <div id="price-fields">
+    <div class="nested-fields">
+      <%= f.simple_fields_for :prices do |price_form| %>
+        <%= price_form.input :ticket_price, label: 'Prix' %>
+        <%= price_form.input :category, label: 'Catégorie' %>
+      <% end %>
+    </div>
+  </div>
 
   <%= f.submit %>
 <% end %>
