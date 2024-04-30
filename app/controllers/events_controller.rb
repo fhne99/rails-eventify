@@ -38,6 +38,10 @@ class EventsController < ApplicationController
     redirect_to events_path, status: :see_other
   end
 
+  def my_events
+    @events = current_user.events
+  end
+
   private
 
   def set_event
