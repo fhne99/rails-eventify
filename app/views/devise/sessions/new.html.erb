@@ -1,23 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      <div>
-        <img src="app/assets/images/crowd-1056764_1280.jpg" alt="Foule faisant la fête">
+    <div class="col-md-6">
+      <div class="welcome-message">
+        <%= image_tag("crowd-1056764_1280.jpg", class: "img-fluid") %>
         <h2>Bienvenue</h2>
       </div>
     </div>
-    <div class="card">
-      <h1>Eventify</h1>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="col-md-6">
+      <div class="card">
+        <h1>Eventify</h1>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <div class="form-inputs">
-        <%= f.input :email,
+        <div class="form-inputs">
+          <%= f.input :email,
                 label: "Votre adresse mail",
                 placeholder: 'adressemail@gmail.com',
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
+          <%= f.input :password,
                 label: "Votre mot de passe",
                 placeholder: '*******',
                 required: false,
@@ -25,15 +26,15 @@
 
         <%# ajouter la possibilité de voir le mot de passe que l'on écrit %>
 
-        <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Se connecter" %>
+        </div>
+
+        <% end %>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Se connecter" %>
-      </div>
-
-      <% end %>
-
     </div>
   </div>
 </div>
