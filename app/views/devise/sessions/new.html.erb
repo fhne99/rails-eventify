@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="welcome-message">
-        <%= image_tag("crowd-1056764_1280.jpg", class: "img-fluid") %>
+        <div class="img-connect-background">
+          <%= image_tag "connect-background.jpg", alt: "Logo d'Eventify", class: "img-fluid" %>
+        </div>
         <h2>Bienvenue</h2>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="card">
+        <div class="logo">
+          <%= image_tag "logo.png", alt: "Logo d'Eventify" %>
+        </div>
         <h1>Eventify</h1>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -19,6 +24,7 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
           <%= link_to("Mot de passe oublié ?", new_password_path(@user)) %>
+          <%# ajouter une classe pour modifier l'apparence du lien et corriger sa position %>
           <%= f.input :password,
                 label: "MOT DE PASSE",
                 placeholder: 'Entrez votre mot de passe',
@@ -31,7 +37,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.submit "Se connecter", class: "button-" %>
+          <%= f.submit "Se connecter", class: "button-connect" %>
         </div>
 
         <% end %>
