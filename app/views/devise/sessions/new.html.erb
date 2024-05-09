@@ -13,14 +13,15 @@
 
         <div class="form-inputs">
           <%= f.input :email,
-                label: "Votre adresse mail",
-                placeholder: 'adressemail@gmail.com',
+                label: "ADRESSE MAIL",
+                placeholder: 'Entrez votre adresse mail',
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
+          <%= link_to("Mot de passe oublié ?", new_password_path(@user)) %>
           <%= f.input :password,
-                label: "Votre mot de passe",
-                placeholder: '*******',
+                label: "MOT DE PASSE",
+                placeholder: 'Entrez votre mot de passe',
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
 
@@ -30,7 +31,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Se connecter" %>
+          <%= f.submit "Se connecter", class: "button-" %>
         </div>
 
         <% end %>
@@ -38,9 +39,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<%= render "devise/shared/links" %>
